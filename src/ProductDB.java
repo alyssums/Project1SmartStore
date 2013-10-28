@@ -8,7 +8,7 @@ public class ProductDB {
 
 	/*List available inventory, remove from ProductDB (which adds to Cart), add to ProductDB (which removes from Cart)*/
 	
-	 HashMap <String, Product> database = new HashMap <String, Product>();
+	 HashMap <String, Product> inventory = new HashMap <String, Product>();
      
      ProductDB(){
           Book book1 = new Book();
@@ -20,7 +20,7 @@ public class ProductDB {
           book1.numberPages = "320";
           book1.desc = "The Caribbean, 1665.  A remote colony of the English Crown...";
 
-          database.put(book1.ID, book1);
+          inventory.put(book1.ID, book1);
 
           Book book2 = new Book();
           book2.ID = "CSH";
@@ -30,7 +30,7 @@ public class ProductDB {
           book2.genre = "Who Done It";
           book2.numberPages = "944";
           book2.desc = "A collection of Sherlock Holmes' adventures";
-          database.put(book2.ID, book2);
+          inventory.put(book2.ID, book2);
           
           Book book3 = new Book();
           book3.ID = "HPDH";
@@ -40,7 +40,7 @@ public class ProductDB {
           book3.genre = "Wizarding";
           book3.numberPages = "784";
           book3.desc = "Harry has started on his final journey to defeat Voldemort for good.";
-          database.put(book3.ID, book3);
+          inventory.put(book3.ID, book3);
 
           Music music1 = new Music();
           music1.ID = "HWGA";
@@ -50,7 +50,7 @@ public class ProductDB {
           music1.artist = "Wynton Marsalis";
           music1.format = "Audio CD";
           music1.genre = "Blues";
-          database.put(music1.ID, music1);
+          inventory.put(music1.ID, music1);
           
           Music music2 = new Music();
           music2.ID = "MC";
@@ -60,7 +60,7 @@ public class ProductDB {
           music2.artist = "Paul McCartney";
           music2.format = "MP3 Download";
           music2.genre = "Rock";
-          database.put(music2.ID, music2);
+          inventory.put(music2.ID, music2);
           
           Video video1 = new Video();
           video1.ID = "KS";
@@ -72,7 +72,7 @@ public class ProductDB {
           video1.format = "DVD";
           video1.year = "2010";
           video1.runningTime = "119 minutes";
-          database.put(video1.ID, video1);
+          inventory.put(video1.ID, video1);
           
           Video video2 = new Video();
           video2.ID = "HW";
@@ -84,7 +84,7 @@ public class ProductDB {
           video2.format = "Blu-ray";
           video2.year = "1998";
           video2.runningTime = "169 minutes";
-          database.put(video2.ID, video2);
+          inventory.put(video2.ID, video2);
           
           Video video3 = new Video();
           video3.ID = "RHPS";
@@ -96,7 +96,7 @@ public class ProductDB {
           video3.format = "DVD";
           video3.year = "1975";
           video3.runningTime = "100 minutes";
-          database.put(video3.ID, video3);
+          inventory.put(video3.ID, video3);
           
           Video video4 = new Video();
           video4.ID = "LOTR";
@@ -108,14 +108,32 @@ public class ProductDB {
           video4.format = "Blu-ray";
           video4.year = "2001";
           video4.runningTime = "178 minutes";
-          database.put(video4.ID, video4);
+          inventory.put(video4.ID, video4);
           
           
      }
 
-public HashMap<String, Product> loadDatabase() {
+     public boolean addProduct(int productID){
+         Product p = inventory.get(productID);
+         if(p != null){
+             //We have a product of that type in the database, lets increment its qty
+             p.incrementQuantity(); //qty++;
+             return true;
+         } else {
+             System.out.println("Product does not exist in database!");
+             return false;
+         }
+     }     
+     
+public boolean isInStock(int productID){
+   Product p = inventory.get(productID);
+         
+      return (p.qty == 0);
+     }
+
+public HashMap<String, Product> loadInventory() {
 	// TODO Auto-generated method stub
-	return database;
-}
+	return inventory;
+	}
 }
 

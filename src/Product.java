@@ -33,5 +33,10 @@ public class Product
       msg += "Quantity: " + this.qty;
       return msg;
     }
+
+	public void incrementQuantity() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }
