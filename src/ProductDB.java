@@ -123,7 +123,17 @@ public class ProductDB {
              System.out.println("Product does not exist in database!");
              return false;
          }
-     }     
+     }
+     public boolean removeProduct(int productID){
+    	 Product p = inventory.get(productID);
+    	 if(p != null){
+    		 p.decrementQuantity();
+    		 return true;
+    	 } else {
+    		 System.out.println("Product does not exist in database!");
+    		 return false;
+    	 }
+     }
      
 public boolean isInStock(int productID){
    Product p = inventory.get(productID);
@@ -131,9 +141,15 @@ public boolean isInStock(int productID){
       return (p.qty == 0);
      }
 
+public boolean isInCart(int productID) {
+	// TODO Auto-generated method stub
+	return false;
+}
 public HashMap<String, Product> loadInventory() {
 	// TODO Auto-generated method stub
 	return inventory;
 	}
+
 }
+
 

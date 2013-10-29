@@ -54,6 +54,15 @@ public class Controller{
             System.out.println("This item is out of stock and can't be added to the cart!");
         }
     }
+    
+    public void removeFromCart(int productID){
+    	if(db.isInCart(productID)){
+    		Product p = contents.get(productID);
+    		cart.remove(p);
+    	} else {
+    		System.out.println("Item not found in cart");
+    	}
+    }
 
     
 }      

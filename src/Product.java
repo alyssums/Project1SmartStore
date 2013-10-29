@@ -38,5 +38,10 @@ public class Product
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void decrementQuantity() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }
