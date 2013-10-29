@@ -1,5 +1,5 @@
 
-public class Product 
+public abstract class Product
 {
     String ID, name, desc;
     int qty;

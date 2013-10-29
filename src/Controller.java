@@ -45,22 +45,30 @@ public class Controller{
     
 
     
-    public void addToCart(int productID){
+    public boolean addToCart(String productID){
         //in our controller we have contents (database) and cart available
-        if(db.isInStock(productID)){
-            Product p = contents.get(productID);
+    	if(db.isInStock(productID)){
+           Product p = contents.get(System.in);{
+           if (p != null) 	
             cart.add(p);
+            return true;
+            }
         } else {
-            System.out.println("This item is out of stock and can't be added to the cart!");
+            return false;
         }
     }
     
-    public void removeFromCart(int productID){
+    
+    
+    public boolean removeFromCart(String productID){
     	if(db.isInCart(productID)){
-    		Product p = contents.get(productID);
-    		cart.remove(p);
+    		Product p = contents.get(productID);{
+    			if (p != null)
+    			cart.remove(p);
+    			return true;
+    			}
     	} else {
-    		System.out.println("Item not found in cart");
+    		return false;
     	}
     }
 

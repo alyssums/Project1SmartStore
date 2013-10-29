@@ -150,6 +150,16 @@ public HashMap<String, Product> loadInventory() {
 	return inventory;
 	}
 
+public boolean isInStock(String productID) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+public boolean isInCart(String productID) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
 }
 
 

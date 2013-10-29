@@ -24,11 +24,23 @@ public class StoreUI {
             	System.out.println(Cart.contents);
             } else if (input.equals ("Add") | input.equals("add")){
             	System.out.print("Key code > ");
+            	ctrl.addToCart(input);{
+            		if (ctrl.addToCart(input) == true)
+            			System.out.println("Added to cart!");
+            		else
+            			System.out.println("Item not added");
+            	}
             	//Scanner productID = new Scanner (System.in);
             	//String key = productID.nextLine().toUpperCase();
             	//Take that info, add item to cart
             } else if (input.equals ("Remove") | input.equals("remove")){
             	System.out.print("Key code > ");
+            	ctrl.removeFromCart(input);{
+            		if (ctrl.removeFromCart(input) == true)
+            			System.out.println("Removed from cart!");
+            		else
+            			System.out.println("Item not removed");
+            	}
             	//Scanner scan
             	//String key = scan.nextLine().toUpperCase();
             	//Take that info, remove item from cart
