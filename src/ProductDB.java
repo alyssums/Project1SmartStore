@@ -9,7 +9,7 @@ public class ProductDB {
 	/*List available inventory, remove from ProductDB (which adds to Cart), add to ProductDB (which removes from Cart)*/
 	
 	 HashMap <String, Product> inventory = new HashMap <String, Product>();
-     
+	 
      ProductDB(){
           Book book1 = new Book();
           book1.ID = "PL";
@@ -135,28 +135,34 @@ public class ProductDB {
     	 }
      }
      
-public boolean isInStock(int productID){
-   Product p = inventory.get(productID);
-         
+public boolean isInStock(String productID){
+   Product p = inventory.get(productID); {
+       if (p != null)
+    	   return true;
+       else
+    	   return false;}
+   
+       
+      /* }
       return (p.qty == 0);
-     }
-
-public boolean isInCart(int productID) {
-	// TODO Auto-generated method stub
-	return false;
+     }*/
 }
+
+/*public boolean isInCart(int productID) {
+	Product p = cart.contents.get(productID);{
+		if (p != null)
+			return true;
+		else
+			return false;
+	}
+
+}*/
 public HashMap<String, Product> loadInventory() {
 	// TODO Auto-generated method stub
 	return inventory;
 	}
 
-public boolean isInStock(String productID) {
-	// TODO Auto-generated method stub
-	return false;
-}
-
 public boolean isInCart(String productID) {
-	// TODO Auto-generated method stub
 	return false;
 }
 

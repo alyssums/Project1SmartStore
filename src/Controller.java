@@ -42,13 +42,12 @@ public class Controller{
 		return null;
     	
     }*/
-    
-
+   
     
     public boolean addToCart(String productID){
         //in our controller we have contents (database) and cart available
     	if(db.isInStock(productID)){
-           Product p = contents.get(System.in);{
+           Product p = contents.get(productID);{
            if (p != null) 	
             cart.add(p);
             return true;

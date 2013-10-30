@@ -28,5 +28,13 @@ public class Cart{
 		// TODO Auto-generated method stub
 		
 	}
+	public boolean isInCart(int productID) {
+		Product p = Cart.contents.get(productID);{
+			if (p != null)
+				return true;
+			else
+				return false;
+		}
+	}
 
 }
