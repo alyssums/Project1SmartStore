@@ -14,62 +14,53 @@ public class Controller{
     Controller(){       
         contents = db.loadInventory();
     }
-    
-    
+
     String getItemInfo(String key){
-       // Get info for requested item
        return contents.get(key).toString(); 
     }
     
     String getItemInventory(){
-        // Get info for all items
         Vector <String> keys = new Vector (contents.keySet());
         Collections.sort(keys);
         String msg = "";
         for (Enumeration <String> e = keys.elements(); e.hasMoreElements();){
             String key = e.nextElement();
             Product item = contents.get(key);  
-            msg += item.name + ", " + item.qty + "\n";
+            msg += item.name + ", " + item.dbQty + "\n";
         }
         return msg;
     }
-    
-   /* String removeItemFromCart(){
-		cart.print("Select an item to remove: ");
-		Scanner scanRemove = new Scanner(System.in);
-		cart.remove(System.in);
-		System.out.println ("You have removed: " + System.in);
-		return null;
-    	
-    }*/
+    String getCartInventory(){
+        Vector <String> keys = new Vector (cart.contents.keySet());
+        Collections.sort(keys);
+        String msg = "";
+        for (Enumeration <String> e = keys.elements(); e.hasMoreElements();){
+            String key = e.nextElement();
+            Product item = cart.contents.get(key); 
+            if (item.cartQty != 0)
+            msg += item.name + ", " + item.cartQty + "\n";
+        }
+        return msg;
+    }
    
     
+    
     public boolean addToCart(String productID){
-        //in our controller we have contents (database) and cart available
-    	if(db.isInStock(productID)){
-           Product p = contents.get(productID);{
-           if (p != null) 	
-            cart.add(p);
+        if(db.isInStock(productID)){
+            cart.addProduct(productID);
+            db.removeProduct(productID);
             return true;
-            }
         } else {
             return false;
         }
-    }
-    
-    
-    
+      }
     public boolean removeFromCart(String productID){
-    	if(db.isInCart(productID)){
-    		Product p = contents.get(productID);{
-    			if (p != null)
-    			cart.remove(p);
-    			return true;
-    			}
-    	} else {
-    		return false;
-    	}
-    }
-
-    
+         if(cart.isInCart(productID)){
+            cart.removeProduct(productID);
+            db.addProduct(productID);
+               return true;
+            } else {
+                return false;
+            }
+    }    
 }      

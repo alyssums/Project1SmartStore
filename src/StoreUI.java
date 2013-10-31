@@ -18,36 +18,45 @@ public class StoreUI {
             System.out.println("Enter selection > ");
             Scanner scan = new Scanner(System.in);
             String input = scan.nextLine();{
-            
+            	System.out.println("");
+            }
             if (input.equals("List") | input.equals("list")){
                 System.out.println(ctrl.getItemInventory());
             } else if (input.equals("Cart") | input.equals("cart")){
-            	System.out.println(Cart.contents);
+            	System.out.println(ctrl.getCartInventory()); 
             } else if (input.equals ("Add") | input.equals("add")){
-            	/*System.out.print("Enter transaction date (mm/dd/yyyy) > ");
+            	System.out.print("Enter transaction date (mm/dd/yyyy) > ");
             	Scanner scanDate = new Scanner (System.in);
             	scan.useDelimiter("/");
             	String date = scanDate.nextLine();
-            	Transaction.isValidDate(input);{
-            		if (Transaction.isValidDate(input) == true)
-            			continue;
+            	Transaction.isValidDate(date);{
+            		if (Transaction.isValidDate(date) == true)
+            			System.out.println("Valid Date");
             		else
             			System.out.println("Invalid date!");
-            	}*/
+            		}
             	System.out.print("Key code > ");
             	Scanner scanProductID = new Scanner (System.in);
             	String productID = scanProductID.nextLine().toUpperCase();
-            	ctrl.addToCart(productID);{
-            		if (ctrl.addToCart(productID) == true)
-            			System.out.println("Added to cart!");
-            		else
-            			System.out.println("Item not added");
-            	}
+            	if (ctrl.addToCart(productID) == true)
+                    System.out.println("Added to cart!");
+            	else
+                    System.out.println("Item not added");
             } else if (input.equals ("Remove") | input.equals("remove")){
+            	System.out.print("Enter transaction date (mm/dd/yyyy) > ");
+            	Scanner scanDate = new Scanner (System.in);
+            	scan.useDelimiter("/");
+            	String date = scanDate.nextLine();
+            	Transaction.isValidDate(date);{
+            		if (Transaction.isValidDate(date) == true)
+            			System.out.println("Valid Date");
+            		else
+            			System.out.println("Invalid date!");
+            		}
             	System.out.print("Key code > ");
             	Scanner scanProductID = new Scanner (System.in);
             	String productID = scanProductID.nextLine().toUpperCase();
-            	ctrl.removeFromCart(productID);{
+            	{
             		if (ctrl.removeFromCart(productID) == true)
             			System.out.println("Removed from cart!");
             		else
@@ -75,12 +84,10 @@ public class StoreUI {
                        done = true;
                    	else 
                    		continue;
-                   
-                   scan1.close();
+                   		scan1.close();
             } else {
             	System.out.println("I don't understand command '" + input + "'.");
             
-            }
             }
         }
     }

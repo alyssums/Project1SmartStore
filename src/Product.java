@@ -1,10 +1,10 @@
 
-public class Product
+abstract class Product
 {
     String ID, name, desc;
-    int qty;
+    int dbQty;
+    int cartQty;
 
-    
     Product()
     {}
     
@@ -31,18 +31,32 @@ public class Product
       msg += "ID: " + this.ID + "\n";
       msg += "Name: " + this.name + "\n";
       msg += "Description: " + this.desc + "\n";
-      msg += "Quantity: " + this.qty;
+      msg += "Quantity: " + this.dbQty;
       return msg;
     }
 
-	public void incrementQuantity() {
-		// TODO Auto-generated method stub
+    
+    public void incrementCartQuantity(){
+		cartQty++;
 		
 	}
 
-	public void decrementQuantity() {
-		// TODO Auto-generated method stub
+	public void decrementCartQuantity(){
+		if (cartQty != 0)
+		cartQty--;
+		else
+			System.out.println("No items available to remove");
+	}
+	
+    public void incrementInventoryQuantity(){
+		dbQty++;
 		
 	}
-    
+
+	public void decrementInventoryQuantity(){
+		if (dbQty != 0)
+		dbQty-- ;
+		else
+			System.out.println("No items available in stock");
+	}
 }
