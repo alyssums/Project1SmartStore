@@ -134,7 +134,7 @@ public class ProductDB {
      
     public boolean isInStock(String productID){
     	Product p = contents.get(productID); 
-    	if (p != null)
+    	if (p.dbQty != 0)
     	   return true;
     	else
     	   System.out.println("Product is not in stock");

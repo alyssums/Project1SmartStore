@@ -25,8 +25,9 @@ public class Controller{
         String msg = "";
         for (Enumeration <String> e = keys.elements(); e.hasMoreElements();){
             String key = e.nextElement();
-            Product item = contents.get(key);  
-            msg += item.name + ", " + item.dbQty + "\n";
+            Product item = contents.get(key); 
+            String ID;
+            msg += item.name + ", " + item.ID + ", " + item.dbQty + "\n";
         }
         return msg;
     }

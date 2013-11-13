@@ -15,10 +15,12 @@ public class Transaction {
             format.setLenient(false);
             format.parse(scanDate);
         } catch (ParseException e) {
-        	System.out.println("ParseException e");
+        	//System.out.println("ParseException e")
+        	System.out.println("Invalid date!");
+        	System.exit(0);
             return false;
         } catch (IllegalArgumentException e) {
-        	System.out.println("IllegalArgumentException e");
+        	//System.out.println("IllegalArgumentException e");
             return false;
         }
         return true;

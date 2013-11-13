@@ -10,7 +10,7 @@ public class StoreUI {
         System.out.println("2 - Details");
         System.out.println("3 - Cart");
         System.out.println("4 - Add");
-        System.out.println("5 - Return");
+        System.out.println("5 - Remove");
         System.out.println("6 - Help");
         System.out.println("7 - Quit");
         boolean done = false;
@@ -32,16 +32,14 @@ public class StoreUI {
             	Transaction.isValidDate(date);{
             		if (Transaction.isValidDate(date) == true)
             			System.out.println("Valid Date");
-            		else
-            			System.out.println("Invalid date!");
-            		}
+            	}
             	System.out.print("Key code > ");
             	Scanner scanProductID = new Scanner (System.in);
             	String productID = scanProductID.nextLine().toUpperCase();
             	if (ctrl.addToCart(productID) == true)
                     System.out.println("Added to cart!");
             	else
-                    System.out.println("Item not added");
+                    System.out.println("Item not added; invalid item");
             } else if (input.equals ("Remove") | input.equals("remove")){
             	System.out.print("Enter transaction date (mm/dd/yyyy) > ");
             	Scanner scanDate = new Scanner (System.in);
@@ -50,8 +48,6 @@ public class StoreUI {
             	Transaction.isValidDate(date);{
             		if (Transaction.isValidDate(date) == true)
             			System.out.println("Valid Date");
-            		else
-            			System.out.println("Invalid date!");
             		}
             	System.out.print("Key code > ");
             	Scanner scanProductID = new Scanner (System.in);
@@ -60,7 +56,7 @@ public class StoreUI {
             		if (ctrl.removeFromCart(productID) == true)
             			System.out.println("Removed from cart!");
             		else
-            			System.out.println("Item not removed");
+            			System.out.println("Item not removed; invalid item");
             	}
             } else if (input.equals ("Help") | input.equals ("help")){
             	  System.out.println("Menu");

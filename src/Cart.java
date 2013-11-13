@@ -116,7 +116,7 @@ public class Cart extends ProductDB{
 	
 	 public boolean isInCart(String productID) {
          Product p = contents.get(productID); 
-              if (p != null){
+              if (p.cartQty != 0){
                   return true;
               } else {
                   return false;
@@ -135,7 +135,7 @@ public class Cart extends ProductDB{
 	     }
 	  public boolean removeProduct(String productID){
 	         Product p = contents.get(productID);
-	         if(p != null){
+	         if(p.cartQty != 0){
 	             p.decrementCartQuantity();
 	             return true;
 	         } else {
